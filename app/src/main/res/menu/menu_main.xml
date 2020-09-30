@@ -14,4 +14,8 @@
           android:title="@string/action_modify"
           android:orderInCategory="300"
           app:showAsAction="never"/>
+    <item android:id="@+id/action_filterby"
+          android:title="@string/action_filterby"
+          android:orderInCategory="400"
+          app:showAsAction="never"/>
 </menu>

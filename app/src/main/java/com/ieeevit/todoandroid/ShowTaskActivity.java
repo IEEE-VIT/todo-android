@@ -3,6 +3,9 @@ package com.ieeevit.todoandroid;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
+/**
+ * Activity to show a particular task to the user.
+ */
 public class ShowTaskActivity extends AppCompatActivity {
 
     @Override

@@ -100,6 +100,35 @@ public class MainActivity extends AppCompatActivity {
         // (retrieve the selected task from the adapter).
     }
 
+    /**
+     * Filters the tasks.
+     */
+    private void filterTasks() {
+        // Get the filter parameters from the user and
+        // update the data displayed in the RecyclerView as per the same.
+    }
+
+    /**
+     * Show or hide filtering UI elements.
+     * @param show if true, show the relevant UI elements.
+     */
+    private void showFilteringUIElements(boolean show) {
+        // Alter the visibility of the UI elements that allow the
+        // user to select filter parameters.
+    }
+
+    /**
+     * Returns filter parameters from the UI.
+     * The return type needs to be changed according to design and implementation.
+     * @return the filter parameters. Can be a list or a map.
+     */
+    public Object getFilterParams() {
+        // This can be done by using a separate activity to get the filter parameters
+        // or altering the current UI programmatically to get the filter parameters.
+        // (by calling showFilteringUIElements())
+        return null;
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -123,6 +152,9 @@ public class MainActivity extends AppCompatActivity {
         }
         else if (id == R.id.action_modify) {
             modifyTask();
+        }
+        else if (id == R.id.action_filterby) {
+            filterTasks();
         }
 
         return super.onOptionsItemSelected(item);

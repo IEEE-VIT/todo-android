@@ -3,4 +3,5 @@
     <string name="action_save">Save</string>
     <string name="action_modify">Modify</string>
     <string name="action_delete">Delete</string>
+    <string name="action_filterby">Filter By</string>
 </resources>
