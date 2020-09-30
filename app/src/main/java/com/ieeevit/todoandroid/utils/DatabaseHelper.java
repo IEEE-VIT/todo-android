@@ -115,6 +115,21 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     }
 
     /**
+     * Add all tasks in a list into the database.
+     * @param task The task to be added.
+     */
+    public void addAllTasks(ArrayList<TodoTask> tasks) {
+        // Insert all the tasks into the DB
+    }
+
+    /**
+     * Remove all tasks from the database.
+     */
+    public void removeTasks() {
+        // Delete all tasks from the database
+    }
+
+    /**
      * Remove (delete) a task from the database.
      * @param task The task to be removed.
      */
