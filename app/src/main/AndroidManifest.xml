@@ -9,11 +9,13 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity
+
+	<!-- The SortByActivity activity may be required if a new activity is used for filtering tasks and displaying them -->
+        <!--<activity
                 android:name=".SortByTagsActivity"
                 android:label="@string/title_activity_sort_by"
                 android:theme="@style/AppTheme.NoActionBar">
-        </activity>
+        </activity>-->
         <activity android:name=".ShowTaskActivity">
         </activity>
         <activity android:name=".CreateActivity">
