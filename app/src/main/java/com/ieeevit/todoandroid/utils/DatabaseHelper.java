@@ -123,7 +123,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     }
 
     /**
-     * Remove all tasks from the database.
+     * Remove all tasks from the database
      */
     public void removeTasks() {
         // Delete all tasks from the database

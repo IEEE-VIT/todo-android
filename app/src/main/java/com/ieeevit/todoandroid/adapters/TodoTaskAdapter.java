@@ -18,11 +18,6 @@ import java.util.ArrayList;
 public class TodoTaskAdapter extends RecyclerView.Adapter<TodoTaskAdapter.TodoTaskHolder> {
 
     /**
-     * Context.
-     */
-    private Context context;
-
-    /**
      * This list holds the tasks.
      */
     private ArrayList<TodoTask> tasks;
@@ -93,8 +88,7 @@ public class TodoTaskAdapter extends RecyclerView.Adapter<TodoTaskAdapter.TodoTa
      * @param context
      * @param tasks the list of TodoTasks.
      */
-    public TodoTaskAdapter(Context context, ArrayList<TodoTask> tasks) {
-        this.context = context;
+    public TodoTaskAdapter(ArrayList<TodoTask> tasks) {
         this.tasks = tasks;
     }
 
