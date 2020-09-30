@@ -4,4 +4,5 @@
     <string name="action_modify">Modify</string>
     <string name="action_delete">Delete</string>
     <string name="action_filterby">Filter By</string>
+    <string name="title_activity_sort_by">Sort By</string>
 </resources>
