@@ -9,6 +9,7 @@
         tools:showIn="@layout/activity_main"
         tools:context=".MainActivity">
 
+    <!-- Add UI components for filtering if needed -->
     <android.support.v7.widget.RecyclerView
         android:id="@+id/tasks_recycler_view"
         android:layout_width="match_parent"
