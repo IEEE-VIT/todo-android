@@ -4,9 +4,14 @@ import android.os.Bundle;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import com.ieeevit.todoandroid.adapters.TodoTaskAdapter;
 import com.ieeevit.todoandroid.models.TodoTask;
 import com.ieeevit.todoandroid.utils.DatabaseHelper;
 
@@ -61,6 +66,11 @@ public class MainActivity extends AppCompatActivity {
         /*
         Set up the RecyclerView that displays the tasks here.
          */
+        RecyclerView recyclerView =findViewById(R.id.tasks_recycler_view);
+        recyclerView.setAdapter(new TodoTaskAdapter(allTasks,this));
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
     }
 
     /**
