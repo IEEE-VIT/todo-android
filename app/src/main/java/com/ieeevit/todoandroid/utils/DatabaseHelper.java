@@ -1,14 +1,17 @@
 package com.ieeevit.todoandroid.utils;
 
+import android.content.ContentValues;
 import android.content.Context;
 import com.ieeevit.todoandroid.models.TodoTask;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 /**
  * Helper class for SQLite database operations.
@@ -21,6 +24,16 @@ public class DatabaseHelper extends SQLiteOpenHelper{
      * Database file name. For example: TodoTasks.db
      */
     private static final String DB_NAME = "";
+
+    /**
+     * Table name for the tasks table.
+     */
+    public static final String TASKS_TABLE_NAME = "";
+
+    /**
+     * Table name for task tags table.
+     */
+    public static final String TAGS_TABLE_NAME = "";
 
     /**
      * Column name for the task title.
@@ -38,9 +51,19 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     public static final String TASK_DEADLINE_COLNAME = "";
 
     /**
+     * Column name for task tag id.
+     */
+    public static final String TASK_TAGS_ID_COLNAME = "";
+
+    /**
      * Column name for task tags.
      */
     public static final String TASK_TAGS_COLNAME = "";
+
+    /**
+     * Logger class tag.
+     */
+    private static final String TAG = "DatabaseHelper";
 
     /**
      * Constructor for the DatabaseHelper.
@@ -116,17 +139,51 @@ public class DatabaseHelper extends SQLiteOpenHelper{
 
     /**
      * Add all tasks in a list into the database.
-     * @param task The task to be added.
+     * @param tasks The task to be added.
      */
     public void addAllTasks(ArrayList<TodoTask> tasks) {
-        // Insert all the tasks into the DB
+        removeTasks();
+        SQLiteDatabase db = getWritableDatabase();
+        db.beginTransaction();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        try {
+            for (TodoTask task : tasks) {
+                ContentValues taskValues = new ContentValues();
+                taskValues.put(TASK_TITLE_COLNAME, task.getTaskTitle());
+                taskValues.put(TASK_DET_COLNAME, task.getTaskContent());
+                taskValues.put(TASK_DEADLINE_COLNAME, dateFormat.format(task.getTaskDeadline()));
+                long taskId = db.insertOrThrow(TASKS_TABLE_NAME, null, taskValues);
+                for (String tag : task.getTags()) {
+                    ContentValues tagValues = new ContentValues();
+                    tagValues.put(TASK_TAGS_ID_COLNAME, taskId);
+                    tagValues.put(TASK_TAGS_COLNAME, tag);
+                    db.insertOrThrow(TAGS_TABLE_NAME, null, tagValues);
+                }
+            }
+            db.setTransactionSuccessful();
+        } catch (Exception e) {
+            Log.d(TAG, "Error while trying to add tasks to database");
+        } finally {
+            db.endTransaction();
+        }
     }
 
     /**
      * Remove all tasks from the database
      */
     public void removeTasks() {
-        // Delete all tasks from the database
+        SQLiteDatabase db = getWritableDatabase();
+        db.beginTransaction();
+        try {
+            //Must delete all tags first, due to foreign key.
+            db.delete(TAGS_TABLE_NAME, null, null);
+            db.delete(TASKS_TABLE_NAME, null, null);
+            db.setTransactionSuccessful();
+        } catch (Exception e) {
+            Log.d(TAG, "Error while trying to delete all tasks");
+        } finally {
+            db.endTransaction();
+        }
     }
 
     /**
