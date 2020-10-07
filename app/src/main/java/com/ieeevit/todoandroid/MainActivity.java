@@ -1,12 +1,15 @@
 package com.ieeevit.todoandroid;
 
+import android.content.Intent;
 import android.os.Bundle;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.ieeevit.todoandroid.models.TodoTask;
 import com.ieeevit.todoandroid.utils.DatabaseHelper;
 
@@ -73,6 +76,8 @@ public class MainActivity extends AppCompatActivity {
         // One way to get data could be to use another activity
         // And return the required data about the new task
         // from that activity.
+        Intent intent = new Intent(MainActivity.this, CreateActivity.class);
+        startActivity(intent);
     }
 
     /**
