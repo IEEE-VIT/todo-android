@@ -104,8 +104,7 @@ public class TodoTaskAdapter extends RecyclerView.Adapter<TodoTaskAdapter.TodoTa
      * Constructor for the adapter.
      * @param tasks the list of TodoTasks.
      */
-    public TodoTaskAdapter(ArrayList<TodoTask> tasks, Context context) {
-        this.context=context;
+    public TodoTaskAdapter(ArrayList<TodoTask> tasks) {
         this.tasks = tasks;
     }
 
@@ -133,7 +132,7 @@ public class TodoTaskAdapter extends RecyclerView.Adapter<TodoTaskAdapter.TodoTa
     public TodoTaskHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         // Use layout inflater to get a view
         // Then make a TodoTaskHolder with that view and return it
-
+        context=parent.getContext();
         View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_row, parent, false);
         return new TodoTaskHolder(itemView);
     }

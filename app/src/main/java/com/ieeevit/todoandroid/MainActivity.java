@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
         Set up the RecyclerView that displays the tasks here.
          */
         RecyclerView recyclerView =findViewById(R.id.tasks_recycler_view);
-        recyclerView.setAdapter(new TodoTaskAdapter(allTasks,this));
+        recyclerView.setAdapter(new TodoTaskAdapter(allTasks));
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
